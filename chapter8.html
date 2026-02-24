@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dao De Jing - Chapter 8</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="chapter-header">
+<h1>Chapter 8</h1>
+<a href="index.html" class="back-link">← Back to Home</a>
+</header>
+
+<main class="chapter-container">
+
+<section class="full-text">
+<p id="chineseText">
+上善若水。水善利萬物而不爭，處眾人之所惡，故幾於道。  
+居善地，心善淵，與善仁，言善信，政善治，事善能，動善時。
+</p>
+<button onclick="speak(document.getElementById('chineseText').innerText)" class="read-btn">
+  🔊 誦讀全文
+</button>
+</section>
+
+<section class="line-explanation">
+<h2>逐句解釋</h2>
+
+<div class="explanation-card">
+<p class="line"><strong>上善若水</strong></p>
+<p class="explanation">最好的品德像水一樣，柔軟而能滋養萬物。</p>
+</div>
+
+<div class="explanation-card">
+<p class="line"><strong>水善利萬物而不爭</strong></p>
+<p class="explanation">水滋養萬物而不與它們爭高低，象徵謙和而無爭。</p>
+</div>
+
+<div class="explanation-card">
+<p class="line"><strong>處眾人之所惡，故幾於道</strong></p>
+<p class="explanation">水流向人們不喜歡的低處，所以接近“道”，意指順應自然、不爭的智慧。</p>
+</div>
+
+<div class="explanation-card">
+<p class="line"><strong>居善地，心善淵，與善仁，言善信，政善治，事善能，動善時</strong></p>
+<p class="explanation">居住謙卑，內心深遠，與人仁慈，言語誠信，治理有序，行事有能力，行動合時。這是效法水的智慧。</p>
+</div>
+
+</section>
+
+<section class="summary">
+<h2>章節精髓</h2>
+<p>
+第八章教我們效法水的品德：謙卑、不爭、滋養萬物而不自私。無論生活還是治理，都應順應自然規律，內心深遠而外行仁德，行事合時而有能力，這樣才能達到“道”的境界。
+</p>
+</section>
+
+</main>
+
+<script>
+function speak(text) {
+  const synth = window.speechSynthesis;
+  function loadAndSpeak() {
+    const voices = synth.getVoices();
+    const tingTing = voices.find(v => v.name.includes("Ting") && v.lang === "zh-CN");
+    const msg = new SpeechSynthesisUtterance(text);
+    msg.lang = "zh-CN";
+    if (tingTing) msg.voice = tingTing;
+    msg.rate = 0.9; msg.pitch = 1;
+    synth.speak(msg);
+  }
+  if (speechSynthesis.getVoices().length === 0) {
+    speechSynthesis.onvoiceschanged = loadAndSpeak;
+  } else {
+    loadAndSpeak();
+  }
+}
+</script>
+
+</body>
+</html>

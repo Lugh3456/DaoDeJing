@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dao De Jing - Chapter 14</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="chapter-header">
+<h1>Chapter 14</h1>
+<a href="index.html" class="back-link">← Back to Home</a>
+</header>
+
+<main class="chapter-container">
+
+<section class="full-text">
+<p id="chineseText">
+視之不見，名曰夷；聽之不聞，名曰希；搏之不得，名曰微。  
+此三者不可致詰，故混而為一。  
+其上不皦，其下不昧，繩繩兮不可名，復歸於無物。  
+是謂無狀之狀，無物之象，是謂惚恍。
+</p>
+<button onclick="speak(document.getElementById('chineseText').innerText)" class="read-btn">
+  🔊 誦讀全文
+</button>
+</section>
+
+<section class="line-explanation">
+<h2>逐句解釋</h2>
+
+<div class="explanation-card">
+<p class="line"><strong>視之不見，名曰夷</strong></p>
+<p class="explanation">道的本質看不見，因為它無形無象，只能感悟而非用眼睛捕捉。</p>
+</div>
+
+<div class="explanation-card">
+<p class="line"><strong>聽之不聞，名曰希</strong></p>
+<p class="explanation">道的聲音不可聽見，它超越聽覺的範疇，只能以心去領會。</p>
+</div>
+
+<div class="explanation-card">
+<p class="line"><strong>搏之不得，名曰微</strong></p>
+<p class="explanation">想要抓住它是無法的，它極其微妙，不能用手或常規方法獲得。</p>
+</div>
+
+<div class="explanation-card">
+<p class="line"><strong>此三者不可致詰，故混而為一</strong></p>
+<p class="explanation">看不見、聽不聞、抓不住，三者難以追究，但正是這種不可捉摸讓它統一為一。</p>
+</div>
+
+<div class="explanation-card">
+<p class="line"><strong>其上不皦，其下不昧，繩繩兮不可名，復歸於無物</strong></p>
+<p class="explanation">它沒有明亮的頂端，也沒有黑暗的底端，無法用名稱描述，最終回歸於虛無之中。</p>
+</div>
+
+<div class="explanation-card">
+<p class="line"><strong>是謂無狀之狀，無物之象，是謂惚恍</strong></p>
+<p class="explanation">這就是「無形的形象」、「無物的象徵」，充滿神秘與幽微感，讓人心生敬畏。</p>
+</div>
+
+</section>
+
+<section class="summary">
+<h2>章節精髓</h2>
+<p>
+第十四章教我們認識道的無形與微妙。它不可見、不可聞、不可抓，超越所有感官與定義。理解這種「惚恍」的狀態，有助於我們學會謙卑、內觀，並感受宇宙深層的秩序與神秘。
+</p>
+</section>
+
+</main>
+
+<script>
+function speak(text) {
+  const synth = window.speechSynthesis;
+  function loadAndSpeak() {
+    const voices = synth.getVoices();
+    const tingTing = voices.find(v => v.name.includes("Ting") && v.lang === "zh-CN");
+    const msg = new SpeechSynthesisUtterance(text);
+    msg.lang = "zh-CN";
+    if (tingTing) msg.voice = tingTing;
+    msg.rate = 0.9; msg.pitch = 1;
+    synth.speak(msg);
+  }
+  if (speechSynthesis.getVoices().length === 0) {
+    speechSynthesis.onvoiceschanged = loadAndSpeak;
+  } else {
+    loadAndSpeak();
+  }
+}
+</script>
+
+</body>
+</html>

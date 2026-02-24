@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dao De Jing - Chapter 58</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="chapter-header">
+<h1>Chapter 58</h1>
+<a href="index.html" class="back-link">← Back to Home</a>
+</header>
+
+<main class="chapter-container">
+
+<section class="full-text">
+<p id="chineseText">
+其政悶悶，其民淳淳；其政察察，其民缺缺。
+</p>
+<button onclick="speak(document.getElementById('chineseText').innerText)" class="read-btn">
+  🔊 誦讀全文
+</button>
+</section>
+
+<section class="line-explanation">
+<h2>逐句解釋</h2>
+
+<div class="explanation-card">
+<p class="line"><strong>其政悶悶，其民淳淳</strong></p>
+<p class="explanation">統治寬厚而不干涉，人民單純善良，社會和諧。</p>
+</div>
+
+<div class="explanation-card">
+<p class="line"><strong>其政察察，其民缺缺</strong></p>
+<p class="explanation">統治嚴苛、監控過度，人民感到焦慮而失去自然善性。</p>
+</div>
+
+</section>
+
+<section class="summary">
+<h2>章節精髓</h2>
+<p>
+第五十八章告訴我們治國智慧：寬厚與簡單的治理能帶來民心安定，而嚴苛監控則破壞民心與社會秩序。順應自然和民性，比過度控制更有效。
+</p>
+</section>
+
+</main>
+
+<script>
+function speak(text) {
+  const synth = window.speechSynthesis;
+  function loadAndSpeak() {
+    const voices = synth.getVoices();
+    const tingTing = voices.find(v => v.name.includes("Ting") && v.lang === "zh-CN");
+    const msg = new SpeechSynthesisUtterance(text);
+    msg.lang = "zh-CN";
+    if (tingTing) msg.voice = tingTing;
+    msg.rate = 0.9; msg.pitch = 1;
+    synth.speak(msg);
+  }
+  if (speechSynthesis.getVoices().length === 0) {
+    speechSynthesis.onvoiceschanged = loadAndSpeak;
+  } else {
+    loadAndSpeak();
+  }
+}
+</script>
+
+</body>
+</html>

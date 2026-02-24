@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dao De Jing - Chapter 63</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="chapter-header">
+<h1>Chapter 63</h1>
+<a href="index.html" class="back-link">← Back to Home</a>
+</header>
+
+<main class="chapter-container">
+
+<section class="full-text">
+<p id="chineseText">
+為無為，事無事，味無味。大小多少，報怨以德。
+</p>
+<button onclick="speak(document.getElementById('chineseText').innerText)" class="read-btn">
+  🔊 誦讀全文
+</button>
+</section>
+
+<section class="line-explanation">
+<h2>逐句解釋</h2>
+
+<div class="explanation-card">
+<p class="line"><strong>為無為</strong></p>
+<p class="explanation">行事順應自然，不強求，不刻意干預，保持內心和諧。</p>
+</div>
+
+<div class="explanation-card">
+<p class="line"><strong>事無事</strong></p>
+<p class="explanation">處理事情而不執著於結果，讓事情自然而然地發展。</p>
+</div>
+
+<div class="explanation-card">
+<p class="line"><strong>味無味</strong></p>
+<p class="explanation">對事物保持平常心，不過分追求感官享受，也不厭棄平淡。</p>
+</div>
+
+<div class="explanation-card">
+<p class="line"><strong>大小多少，報怨以德</strong></p>
+<p class="explanation">無論大小、多少的事情，都應以德行來化解怨恨，處理關係。</p>
+</div>
+
+</section>
+
+<section class="summary">
+<h2>章節精髓</h2>
+<p>
+第六十三章強調無為而治、順應自然。行事不強求，對事物平常心對待，遇到怨恨以德行回應，這樣能保持生活的平衡與內心安寧。
+</p>
+</section>
+
+</main>
+
+<script>
+function speak(text) {
+  const synth = window.speechSynthesis;
+  function loadAndSpeak() {
+    const voices = synth.getVoices();
+    const tingTing = voices.find(v => v.name.includes("Ting") && v.lang === "zh-CN");
+    const msg = new SpeechSynthesisUtterance(text);
+    msg.lang = "zh-CN";
+    if (tingTing) msg.voice = tingTing;
+    msg.rate = 0.9; msg.pitch = 1;
+    synth.speak(msg);
+  }
+  if (speechSynthesis.getVoices().length === 0) {
+    speechSynthesis.onvoiceschanged = loadAndSpeak;
+  } else {
+    loadAndSpeak();
+  }
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dao De Jing - Chapter 57</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="chapter-header">
+<h1>Chapter 57</h1>
+<a href="index.html" class="back-link">← Back to Home</a>
+</header>
+
+<main class="chapter-container">
+
+<section class="full-text">
+<p id="chineseText">
+以正治國，以奇用兵，以無事取天下。吾何以知其然也？以此。
+</p>
+<button onclick="speak(document.getElementById('chineseText').innerText)" class="read-btn">
+  🔊 誦讀全文
+</button>
+</section>
+
+<section class="line-explanation">
+<h2>逐句解釋</h2>
+
+<div class="explanation-card">
+<p class="line"><strong>以正治國</strong></p>
+<p class="explanation">用正直與公正治理國家，使人民安定，社會秩序良好。</p>
+</div>
+
+<div class="explanation-card">
+<p class="line"><strong>以奇用兵</strong></p>
+<p class="explanation">運用策略和非常手段來應對戰爭，但不濫用武力。</p>
+</div>
+
+<div class="explanation-card">
+<p class="line"><strong>以無事取天下</strong></p>
+<p class="explanation">不爭鬥、不強求，自然能得到天下，順應道的原理。</p>
+</div>
+
+<div class="explanation-card">
+<p class="line"><strong>吾何以知其然也？以此</strong></p>
+<p class="explanation">我如何知道這是真理呢？正是因為順應自然、以德行治國而見成效。</p>
+</div>
+
+</section>
+
+<section class="summary">
+<h2>章節精髓</h2>
+<p>
+第五十七章告訴我們治國與用兵之道：以正直治理，以策略應對，不強求而順應自然。順道而行，天下自安，這提醒領導者與個人都應以德為本，柔而不爭。
+</p>
+</section>
+
+</main>
+
+<script>
+function speak(text) {
+  const synth = window.speechSynthesis;
+  function loadAndSpeak() {
+    const voices = synth.getVoices();
+    const tingTing = voices.find(v => v.name.includes("Ting") && v.lang === "zh-CN");
+    const msg = new SpeechSynthesisUtterance(text);
+    msg.lang = "zh-CN";
+    if (tingTing) msg.voice = tingTing;
+    msg.rate = 0.9; msg.pitch = 1;
+    synth.speak(msg);
+  }
+  if (speechSynthesis.getVoices().length === 0) {
+    speechSynthesis.onvoiceschanged = loadAndSpeak;
+  } else {
+    loadAndSpeak();
+  }
+}
+</script>
+
+</body>
+</html>

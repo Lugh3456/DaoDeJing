@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dao De Jing - Chapter 70</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="chapter-header">
+<h1>Chapter 70</h1>
+<a href="index.html" class="back-link">← Back to Home</a>
+</header>
+
+<main class="chapter-container">
+
+<section class="full-text">
+<p id="chineseText">
+吾言甚易知，甚易行。天下莫能知，莫能行。言有宗，事有君。
+</p>
+<button onclick="speak(document.getElementById('chineseText').innerText)" class="read-btn">
+  🔊 誦讀全文
+</button>
+</section>
+
+<section class="line-explanation">
+<h2>逐句解釋</h2>
+
+<div class="explanation-card">
+<p class="line"><strong>吾言甚易知，甚易行</strong></p>
+<p class="explanation">我說的道理非常容易理解，也容易實行。</p>
+</div>
+
+<div class="explanation-card">
+<p class="line"><strong>天下莫能知，莫能行</strong></p>
+<p class="explanation">然而世人多被心智複雜、慾望牽制，難以理解和實踐這些簡單的道理。</p>
+</div>
+
+<div class="explanation-card">
+<p class="line"><strong>言有宗，事有君</strong></p>
+<p class="explanation">言語有原則，行為有準則，保持根本不偏離道理，方能安身立命。</p>
+</div>
+
+</section>
+
+<section class="summary">
+<h2>章節精髓</h2>
+<p>
+第七十章提醒我們，道理雖簡單，但人往往難以體悟。言行需有根本原則，保持正道，才能真正實踐道的智慧。
+</p>
+</section>
+
+</main>
+
+<script>
+function speak(text) {
+  const synth = window.speechSynthesis;
+  function loadAndSpeak() {
+    const voices = synth.getVoices();
+    const tingTing = voices.find(v => v.name.includes("Ting") && v.lang === "zh-CN");
+    const msg = new SpeechSynthesisUtterance(text);
+    msg.lang = "zh-CN";
+    if (tingTing) msg.voice = tingTing;
+    msg.rate = 0.9; msg.pitch = 1;
+    synth.speak(msg);
+  }
+  if (speechSynthesis.getVoices().length === 0) {
+    speechSynthesis.onvoiceschanged = loadAndSpeak;
+  } else {
+    loadAndSpeak();
+  }
+}
+</script>
+
+</body>
+</html>

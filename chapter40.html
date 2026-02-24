@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dao De Jing - Chapter 40</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="chapter-header">
+<h1>Chapter 40</h1>
+<a href="index.html" class="back-link">← Back to Home</a>
+</header>
+
+<main class="chapter-container">
+
+<section class="full-text">
+<p id="chineseText">
+反者道之動，弱者道之用。天下萬物生於有，有生於無。
+</p>
+<button onclick="speak(document.getElementById('chineseText').innerText)" class="read-btn">
+  🔊 誦讀全文
+</button>
+</section>
+
+<section class="line-explanation">
+<h2>逐句解釋</h2>
+
+<div class="explanation-card">
+<p class="line"><strong>反者道之動</strong></p>
+<p class="explanation">反轉和回歸是道運行的方式，一切循環往復。</p>
+</div>
+
+<div class="explanation-card">
+<p class="line"><strong>弱者道之用</strong></p>
+<p class="explanation">柔弱順從才是道的運用，力量在於無為而不爭。</p>
+</div>
+
+<div class="explanation-card">
+<p class="line"><strong>天下萬物生於有，有生於無</strong></p>
+<p class="explanation">萬物先由“無”生成，再由“有”得以生長。無是萬物的根源。</p>
+</div>
+
+</section>
+
+<section class="summary">
+<h2>章節精髓</h2>
+<p>
+第四十章說明道的運行規律：循環、柔弱和無為。萬物源於“無”，從無到有，萬物自然生成。學習道，應順應自然、尊重循環，善用柔弱之力而非強硬。
+</p>
+</section>
+
+</main>
+
+<script>
+function speak(text) {
+  const synth = window.speechSynthesis;
+  function loadAndSpeak() {
+    const voices = synth.getVoices();
+    const tingTing = voices.find(v => v.name.includes("Ting") && v.lang === "zh-CN");
+    const msg = new SpeechSynthesisUtterance(text);
+    msg.lang = "zh-CN";
+    if (tingTing) msg.voice = tingTing;
+    msg.rate = 0.9; msg.pitch = 1;
+    synth.speak(msg);
+  }
+  if (speechSynthesis.getVoices().length === 0) {
+    speechSynthesis.onvoiceschanged = loadAndSpeak;
+  } else {
+    loadAndSpeak();
+  }
+}
+</script>
+
+</body>
+</html>

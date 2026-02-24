@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dao De Jing - Chapter 60</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="chapter-header">
+<h1>Chapter 60</h1>
+<a href="index.html" class="back-link">← Back to Home</a>
+</header>
+
+<main class="chapter-container">
+
+<section class="full-text">
+<p id="chineseText">
+治大國若烹小鮮。以道莊之，民勿知有。
+</p>
+<button onclick="speak(document.getElementById('chineseText').innerText)" class="read-btn">
+  🔊 誦讀全文
+</button>
+</section>
+
+<section class="line-explanation">
+<h2>逐句解釋</h2>
+
+<div class="explanation-card">
+<p class="line"><strong>治大國若烹小鮮</strong></p>
+<p class="explanation">治理大國就像烹調小魚，要小心謹慎，不可過度干預，以免破壞原本平衡。</p>
+</div>
+
+<div class="explanation-card">
+<p class="line"><strong>以道莊之</strong></p>
+<p class="explanation">以道的原則穩固治理，用自然的方式而非強制控制。</p>
+</div>
+
+<div class="explanation-card">
+<p class="line"><strong>民勿知有</strong></p>
+<p class="explanation">民眾不會察覺政府操控，自然和諧而安定，治理無為而有效。</p>
+</div>
+
+</section>
+
+<section class="summary">
+<h2>章節精髓</h2>
+<p>
+第六十章比喻治理大國的智慧：如烹小魚般輕柔而謹慎。以道為治，讓民眾不覺被操控，天下自然安和。強調「無為而治」與順應自然之道。
+</p>
+</section>
+
+</main>
+
+<script>
+function speak(text) {
+  const synth = window.speechSynthesis;
+  function loadAndSpeak() {
+    const voices = synth.getVoices();
+    const tingTing = voices.find(v => v.name.includes("Ting") && v.lang === "zh-CN");
+    const msg = new SpeechSynthesisUtterance(text);
+    msg.lang = "zh-CN";
+    if (tingTing) msg.voice = tingTing;
+    msg.rate = 0.9; msg.pitch = 1;
+    synth.speak(msg);
+  }
+  if (speechSynthesis.getVoices().length === 0) {
+    speechSynthesis.onvoiceschanged = loadAndSpeak;
+  } else {
+    loadAndSpeak();
+  }
+}
+</script>
+
+</body>
+</html>

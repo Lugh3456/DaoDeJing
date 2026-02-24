@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dao De Jing - Chapter 44</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="chapter-header">
+<h1>Chapter 44</h1>
+<a href="index.html" class="back-link">← Back to Home</a>
+</header>
+
+<main class="chapter-container">
+
+<section class="full-text">
+<p id="chineseText">
+名與身孰親？身與貨孰多？得與亡孰病？是故甚愛必大費，多藏必厚亡。
+</p>
+<button onclick="speak(document.getElementById('chineseText').innerText)" class="read-btn">
+  🔊 誦讀全文
+</button>
+</section>
+
+<section class="line-explanation">
+<h2>逐句解釋</h2>
+
+<div class="explanation-card">
+<p class="line"><strong>名與身孰親？</strong></p>
+<p class="explanation">榮譽與自身哪個更親近？提醒我們名譽並非最重要。</p>
+</div>
+
+<div class="explanation-card">
+<p class="line"><strong>身與貨孰多？</strong></p>
+<p class="explanation">生命與財物哪個更重要？告訴我們財富不能比生命更重。</p>
+</div>
+
+<div class="explanation-card">
+<p class="line"><strong>得與亡孰病？</strong></p>
+<p class="explanation">得失哪個帶來更多痛苦？過分追求反而會帶來困擾。</p>
+</div>
+
+<div class="explanation-card">
+<p class="line"><strong>是故甚愛必大費，多藏必厚亡</strong></p>
+<p class="explanation">過度愛惜會耗費巨大，多藏財物最終難保。勸人知足、節制。</p>
+</div>
+
+</section>
+
+<section class="summary">
+<h2>章節精髓</h2>
+<p>
+第四十四章提醒我們衡量生活中的價值：不要過分追求名利和財富，這會帶來煩惱和損失。懂得知足與節制，才能保護自身，活得更自由和安穩。
+</p>
+</section>
+
+</main>
+
+<script>
+function speak(text) {
+  const synth = window.speechSynthesis;
+  function loadAndSpeak() {
+    const voices = synth.getVoices();
+    const tingTing = voices.find(v => v.name.includes("Ting") && v.lang === "zh-CN");
+    const msg = new SpeechSynthesisUtterance(text);
+    msg.lang = "zh-CN";
+    if (tingTing) msg.voice = tingTing;
+    msg.rate = 0.9; msg.pitch = 1;
+    synth.speak(msg);
+  }
+  if (speechSynthesis.getVoices().length === 0) {
+    speechSynthesis.onvoiceschanged = loadAndSpeak;
+  } else {
+    loadAndSpeak();
+  }
+}
+</script>
+
+</body>
+</html>

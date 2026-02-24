@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dao De Jing - Chapter 49</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="chapter-header">
+<h1>Chapter 49</h1>
+<a href="index.html" class="back-link">← Back to Home</a>
+</header>
+
+<main class="chapter-container">
+
+<section class="full-text">
+<p id="chineseText">
+聖人無常心，以百姓心為心。善者吾善之，不善者吾亦善之，德善。信者吾信之，不信者吾亦信之，德信。
+</p>
+<button onclick="speak(document.getElementById('chineseText').innerText)" class="read-btn">
+  🔊 誦讀全文
+</button>
+</section>
+
+<section class="line-explanation">
+<h2>逐句解釋</h2>
+
+<div class="explanation-card">
+<p class="line"><strong>聖人無常心，以百姓心為心</strong></p>
+<p class="explanation">聖人沒有固定的私心，他以百姓的心為心，順應群眾的需要和本性。</p>
+</div>
+
+<div class="explanation-card">
+<p class="line"><strong>善者吾善之，不善者吾亦善之，德善</strong></p>
+<p class="explanation">對善的人施以善意，即便對不善的人也以善待之，這是德行的表現。</p>
+</div>
+
+<div class="explanation-card">
+<p class="line"><strong>信者吾信之，不信者吾亦信之，德信</strong></p>
+<p class="explanation">信任那些值得信任的人，也同樣信任不信的人，以信德感化萬物，這是德信的實踐。</p>
+</div>
+
+</section>
+
+<section class="summary">
+<h2>章節精髓</h2>
+<p>
+第四十九章說明聖人無私心、順應民心，以德化人。善待與信任所有人，即使是惡或不信者，也能發揮德行與信任的力量，這是道的實踐智慧。
+</p>
+</section>
+
+</main>
+
+<script>
+function speak(text) {
+  const synth = window.speechSynthesis;
+  function loadAndSpeak() {
+    const voices = synth.getVoices();
+    const tingTing = voices.find(v => v.name.includes("Ting") && v.lang === "zh-CN");
+    const msg = new SpeechSynthesisUtterance(text);
+    msg.lang = "zh-CN";
+    if (tingTing) msg.voice = tingTing;
+    msg.rate = 0.9; msg.pitch = 1;
+    synth.speak(msg);
+  }
+  if (speechSynthesis.getVoices().length === 0) {
+    speechSynthesis.onvoiceschanged = loadAndSpeak;
+  } else {
+    loadAndSpeak();
+  }
+}
+</script>
+
+</body>
+</html>

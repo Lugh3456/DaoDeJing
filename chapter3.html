@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dao De Jing - Chapter 3</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="chapter-header">
+  <h1>Chapter 3</h1>
+  <a href="index.html" class="back-link">← Back to Home</a>
+</header>
+
+<main class="chapter-container">
+
+<section class="full-text">
+  <p id="chineseText">
+    不尚賢，使民不爭；不貴難得之貨，使民不為盜；不見可欲，使民心不亂。  
+    是以聖人之治，虛其心，實其腹，弱其志，強其骨。常使民無知無欲。  
+    使夫知者不敢為也。為無為，則無不治。 
+  </p>
+  <button onclick="speak(document.getElementById('chineseText').innerText)" class="read-btn">
+    🔊 誦讀全文
+  </button>
+</section>
+
+<section class="line-explanation">
+  <h2>逐句解釋</h2>
+
+  <div class="explanation-card">
+    <p class="line"><strong>不尚賢，使民不爭</strong></p>
+    <p class="explanation">不要特別誇讚有才德的人，這樣人們就不會因為比誰更優秀而互相爭鬥。</p>
+  </div>
+
+  <div class="explanation-card">
+    <p class="line"><strong>不貴難得之貨，使民不為盜</strong></p>
+    <p class="explanation">不要把稀有的物品看得很珍貴，這樣人們就不會因為貪圖寶物而去偷竊。</p>
+  </div>
+
+  <div class="explanation-card">
+    <p class="line"><strong>不見可欲，使民心不亂</strong></p>
+    <p class="explanation">不要把能引起欲望的東西展示給大家看，這樣人們的內心就不會被誘惑擾亂。</p>
+  </div>
+
+  <div class="explanation-card">
+    <p class="line"><strong>是以聖人之治，虛其心，實其腹</strong></p>
+    <p class="explanation">因此，真正有智慧的人治理天下時，使人內心淡泊、沒有過度的慾念，但卻讓他們的基本生活需要得到滿足。</p>
+  </div>
+
+  <div class="explanation-card">
+    <p class="line"><strong>弱其志，強其骨</strong></p>
+    <p class="explanation">讓人不要過於追求名利野心，而是強化自身的體力與健康，使他們踏實生活。</p>
+  </div>
+
+  <div class="explanation-card">
+    <p class="line"><strong>常使民無知無欲</strong></p>
+    <p class="explanation">經常使人們心無過多知識與欲望，這樣他們能安於寧靜，不被不必要的思想牽動。</p>
+  </div>
+
+  <div class="explanation-card">
+    <p class="line"><strong>使夫知者不敢為也</strong></p>
+    <p class="explanation">讓那些自以為有智慧的人不敢隨便去做過度的行動，因為沒有必要的欲望驅動。</p>
+  </div>
+
+  <div class="explanation-card">
+    <p class="line"><strong>為無為，則無不治</strong></p>
+    <p class="explanation">用“無為”（不強行干預）的方式去治理，反而能使天下萬事萬物自然得以安定。</p>
+  </div>
+
+</section>
+
+<section class="summary">
+  <h2>章節精髓</h2>
+  <p>
+    第三章告訴我們，不要特別誇讚人才或珍惜稀有之物，也不要展示能引起欲望的東西，  
+    如此一來人民就不會相互爭鬥、偷竊和迷亂。真正智慧的治理是讓人心無過度欲望、生活安穩，  
+    不強行干預自然秩序，而是讓一切自然而然地和諧運行。  
+  </p>
+</section>
+
+</main>
+
+<script>
+function speak(text) {
+    const synth = window.speechSynthesis;
+    function loadAndSpeak() {
+        const voices = synth.getVoices();
+        const tingTing = voices.find(v => v.name.includes("Ting") && v.lang === "zh-CN");
+        const msg = new SpeechSynthesisUtterance(text);
+        msg.lang = "zh-CN";
+        if (tingTing) msg.voice = tingTing;
+        msg.rate = 0.9; msg.pitch = 1;
+        synth.speak(msg);
+    }
+    if (speechSynthesis.getVoices().length === 0) {
+        speechSynthesis.onvoiceschanged = loadAndSpeak;
+    } else {
+        loadAndSpeak();
+    }
+}
+</script>
+
+</body>
+</html>

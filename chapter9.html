@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dao De Jing - Chapter 9</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="chapter-header">
+<h1>Chapter 9</h1>
+<a href="index.html" class="back-link">← Back to Home</a>
+</header>
+
+<main class="chapter-container">
+
+<section class="full-text">
+<p id="chineseText">
+持而盈之，不如其已；揣而銳之，不可長保。金玉滿堂，莫之能守；  
+富貴而驕，自遺其咎。功遂身退，天之道。
+</p>
+<button onclick="speak(document.getElementById('chineseText').innerText)" class="read-btn">
+  🔊 誦讀全文
+</button>
+</section>
+
+<section class="line-explanation">
+<h2>逐句解釋</h2>
+
+<div class="explanation-card">
+<p class="line"><strong>持而盈之，不如其已</strong></p>
+<p class="explanation">凡事追求滿盈反而不持久，不如適可而止。</p>
+</div>
+
+<div class="explanation-card">
+<p class="line"><strong>揣而銳之，不可長保</strong></p>
+<p class="explanation">過於鋒利、過於突出，難以長久保持穩定。</p>
+</div>
+
+<div class="explanation-card">
+<p class="line"><strong>金玉滿堂，莫之能守</strong></p>
+<p class="explanation">金銀珠寶堆滿屋，無人能永久保護，過度財富難以長存。</p>
+</div>
+
+<div class="explanation-card">
+<p class="line"><strong>富貴而驕，自遺其咎</strong></p>
+<p class="explanation">擁有財富和地位卻驕傲自滿，最終會自找麻煩。</p>
+</div>
+
+<div class="explanation-card">
+<p class="line"><strong>功遂身退，天之道</strong></p>
+<p class="explanation">事情完成後退居幕後，這是符合自然和天地運行之道的智慧。</p>
+</div>
+
+</section>
+
+<section class="summary">
+<h2>章節精髓</h2>
+<p>
+第九章提醒我們：過度追求滿盈、過於鋒利或財富驕傲，都不會長久。真正智慧的人懂得適可而止，功成身退，順應自然之道，才能長久安穩。
+</p>
+</section>
+
+</main>
+
+<script>
+function speak(text) {
+  const synth = window.speechSynthesis;
+  function loadAndSpeak() {
+    const voices = synth.getVoices();
+    const tingTing = voices.find(v => v.name.includes("Ting") && v.lang === "zh-CN");
+    const msg = new SpeechSynthesisUtterance(text);
+    msg.lang = "zh-CN";
+    if (tingTing) msg.voice = tingTing;
+    msg.rate = 0.9; msg.pitch = 1;
+    synth.speak(msg);
+  }
+  if (speechSynthesis.getVoices().length === 0) {
+    speechSynthesis.onvoiceschanged = loadAndSpeak;
+  } else {
+    loadAndSpeak();
+  }
+}
+</script>
+
+</body>
+</html>

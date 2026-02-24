@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dao De Jing - Chapter 73</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="chapter-header">
+<h1>Chapter 73</h1>
+<a href="index.html" class="back-link">← Back to Home</a>
+</header>
+
+<main class="chapter-container">
+
+<section class="full-text">
+<p id="chineseText">
+勇於敢則殺，勇於不敢則活。此兩者，或利或害，天之道也。
+</p>
+<button onclick="speak(document.getElementById('chineseText').innerText)" class="read-btn">
+  🔊 誦讀全文
+</button>
+</section>
+
+<section class="line-explanation">
+<h2>逐句解釋</h2>
+
+<div class="explanation-card">
+<p class="line"><strong>勇於敢則殺</strong></p>
+<p class="explanation">過度冒險或逞強，可能帶來傷害或破壞，甚至喪命。</p>
+</div>
+
+<div class="explanation-card">
+<p class="line"><strong>勇於不敢則活</strong></p>
+<p class="explanation">懂得謹慎和收斂的人，才能保全自己，避免不必要的風險。</p>
+</div>
+
+<div class="explanation-card">
+<p class="line"><strong>此兩者，或利或害，天之道也</strong></p>
+<p class="explanation">勇與不勇、進與退皆有利害得失，順應自然法則，才符合天道。</p>
+</div>
+
+</section>
+
+<section class="summary">
+<h2>章節精髓</h2>
+<p>
+第七十三章告訴我們，勇敢與謹慎都需要智慧地運用。過度魯莽可能招致損害，而過度退縮又可能失機。明白天道，才能在行動中取得平衡。
+</p>
+</section>
+
+</main>
+
+<script>
+function speak(text) {
+  const synth = window.speechSynthesis;
+  function loadAndSpeak() {
+    const voices = synth.getVoices();
+    const tingTing = voices.find(v => v.name.includes("Ting") && v.lang === "zh-CN");
+    const msg = new SpeechSynthesisUtterance(text);
+    msg.lang = "zh-CN";
+    if (tingTing) msg.voice = tingTing;
+    msg.rate = 0.9; msg.pitch = 1;
+    synth.speak(msg);
+  }
+  if (speechSynthesis.getVoices().length === 0) {
+    speechSynthesis.onvoiceschanged = loadAndSpeak;
+  } else {
+    loadAndSpeak();
+  }
+}
+</script>
+
+</body>
+</html>
