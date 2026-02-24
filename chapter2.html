@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dao De Jing - Chapter 2</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="chapter-header">
+  <h1>Chapter 2</h1>
+  <a href="index.html" class="back-link">← Back to Home</a>
+</header>
+
+<main class="chapter-container">
+
+  <!-- Full Chinese text -->
+  <section class="full-text">
+    <p id="chineseText">
+      天下皆知美之為美，斯惡已；皆知善之為善，斯不善已。  
+      故有無相生，難易相成，長短相形，高下相傾，音聲相和，前後相隨。  
+      是以聖人處無為之事，行不言之教，萬物作焉而不辭，  
+      生而不有，為而不恃，功成而弗居。夫唯弗居，是以不去。
+    </p>
+    <button onclick="speak(document.getElementById('chineseText').innerText)" class="read-btn">
+      🔊 誦讀全文
+    </button>
+  </section>
+
+  <!-- Line by line explanation -->
+  <section class="line-explanation">
+    <h2>逐句解釋</h2>
+
+    <div class="explanation-card">
+      <p class="line"><strong>天下皆知美之為美，斯惡已</strong></p>
+      <p class="explanation">當大家認為某件事是美好的時候，因為有比較的緣故，不美的部分也就出現了。這句話表達了對立和比較如何產生對方的觀念。</p>
+    </div>
+
+    <div class="explanation-card">
+      <p class="line"><strong>皆知善之為善，斯不善已</strong></p>
+      <p class="explanation">同樣的道理，當大家一致認為某種行為是善的，那麼和它相對的不善就會被認出。這告訴我們好壞其實是互相依存的。</p>
+    </div>
+
+    <div class="explanation-card">
+      <p class="line"><strong>故有無相生，難易相成</strong></p>
+      <p class="explanation">“有”和“無”互相生成；困難和容易也是因為彼此比較才被認識。這表示事物是靠對照才形成意義。</p>
+    </div>
+
+    <div class="explanation-card">
+      <p class="line"><strong>長短相形，高下相傾</strong></p>
+      <p class="explanation">長和短互相襯托，高和低互相依存。這告訴我們世界上的所有差異，其實都是相互依靠、互相定義的。</p>
+    </div>
+
+    <div class="explanation-card">
+      <p class="line"><strong>音聲相和，前後相隨</strong></p>
+      <p class="explanation">聲音和旋律互相和諧，前後次序也是互相跟隨。這句強調所有關係都是互動和平衡的，而非孤立存在。</p>
+    </div>
+
+    <div class="explanation-card">
+      <p class="line"><strong>是以聖人處無為之事，行不言之教</strong></p>
+      <p class="explanation">因此，真正有智慧的人，不強行干涉、不刻意操控，用行動影響世界而不是用言語去說教。</p>
+    </div>
+
+    <div class="explanation-card">
+      <p class="line"><strong>萬物作焉而不辭，生而不有，為而不恃</strong></p>
+      <p class="explanation">他讓萬物自然成長卻不自誇，不把萬物當成自己的東西，也不依賴自己能做成這些事情。</p>
+    </div>
+
+    <div class="explanation-card">
+      <p class="line"><strong>功成而弗居，夫唯弗居，是以不去</strong></p>
+      <p class="explanation">他完成了事情卻不將成果據為己有，正因為不居功，成果自然不會消失。這是在說一種謙卑、無執著的智慧。</p>
+    </div>
+
+  </section>
+
+  <!-- Summary explanation -->
+  <section class="summary">
+    <h2>章節精髓</h2>
+    <p>
+      本章主要談到對立和比較如何形成世界的概念，比如美與不美、善與不善互相依存。這些對立關係提醒我們，世界上很多概念並非獨立存在，而是互相衍生、互相定義的。  
+      接著提到，真正的智者不刻意干涉、不用言語說教，而是順應萬物自然演化，成就而不居功。這種生活態度教導我們學會謙卑、放下執著，用無為而治的方式看待人生和世界。
+    </p>
+  </section>
+
+</main>
+
+<script>
+function speak(text) {
+    const synth = window.speechSynthesis;
+
+    function loadAndSpeak() {
+        const voices = synth.getVoices();
+        const tingTing = voices.find(v => v.name.includes("Ting") && v.lang === "zh-CN");
+
+        const msg = new SpeechSynthesisUtterance(text);
+        msg.lang = "zh-CN";
+
+        if (tingTing) msg.voice = tingTing;
+
+        msg.rate = 0.9;
+        msg.pitch = 1;
+
+        synth.speak(msg);
+    }
+
+    if (speechSynthesis.getVoices().length === 0) {
+        speechSynthesis.onvoiceschanged = loadAndSpeak;
+    } else {
+        loadAndSpeak();
+    }
+}
+</script>
+
+</body>
+</html>
