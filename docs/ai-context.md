@@ -4,6 +4,15 @@ Always read this file before modifying the site.
 
 ---
 
+# Current State
+Last updated: 2026-04-26
+Phase: Phase 3 — Content Improvement (Phase 4 complete)
+Last completed: Full content audit — 2026-04-26. All 81 chapters verified for correct Chinese source text and complete explanation cards. All structure checks pass.
+In progress: —
+Next up: —
+
+---
+
 # Project Purpose
 
 A static educational site presenting all 81 chapters of the Dao De Jing (道德經).
@@ -39,12 +48,44 @@ DaoDeJing/
   chapter1.html … chapter81.html  ← chapter pages
   css/style.css         ← all styles
   images/               ← future assets
-  docs/                 ← this folder
-  Backup/               ← dated backups
+  docs/
+    readme.md           ← project overview
+    architecture.md     ← technical structure
+    plan.md             ← vision and objectives
+    roadmap.md          ← phased delivery plan
+    ai-context.md       ← this file
+    audit-config.json   ← site structure config for content audit
+    reference.py        ← authoritative Wang Bi text for all 81 chapters
+  Backup/               ← dated backups (YYYY-MM-DD/) before changes
 ```
 
 Never put CSS outside `css/`. Never put HTML in subfolders.
 All pages must be at the repository root to work with GitHub Pages.
+
+---
+
+# Content Audit
+
+**Always run the content audit before pushing to GitHub.**
+
+This site has a dedicated audit skill (`ddj-content-audit`) that checks:
+1. The Chinese source text in every chapter matches the authoritative Wang Bi reference
+2. Every line of source text has a corresponding explanation card
+3. All HTML structure elements are present and correct (nav links, titles, sections, scripts, accessibility)
+
+## Audit files (in docs/)
+
+`audit-config.json` — describes this site's HTML structure so the audit scripts know where to look. Contains the element selectors, section class names, and reference file location.
+
+`reference.py` — the authoritative Wang Bi text for all 81 chapters. This is the "correct answer" file. The audit compares every chapter's `<p id="chineseText">` against this reference and flags any wrong, truncated, or mismatched text.
+
+## How to run the audit
+
+Ask Claude to audit the DaoDeJing site. The `ddj-content-audit` skill handles the rest — it reads the config, runs both checks, and reports any issues before you push.
+
+## History
+
+A 2026-04-26 audit found 69 of 81 chapters had content problems (wrong text, truncated text, missing explanation cards). All were fixed that day. See `Backup/2026-04-26/` for the pre-fix snapshots.
 
 ---
 
@@ -151,6 +192,7 @@ Every chapter page must follow this structure:
 # Development Philosophy
 
 Prefer simple HTML and clean structure.
-Batch changes across many files using Python scripts.
+Use a Python script for any change touching 5 or more files; edit directly for fewer than 5.
 Always create a dated Backup/ folder before modifying files.
+Run the content audit before pushing to GitHub.
 Verify locally before pushing to GitHub.
