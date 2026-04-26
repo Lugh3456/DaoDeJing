@@ -18,7 +18,14 @@ DaoDeJing/
   css/
     style.css           ← all styles (design tokens, layout, components)
   images/               ← future assets (illustrations, icons)
-  docs/                 ← project documentation
+  docs/
+    readme.md           ← project overview
+    architecture.md     ← this file
+    plan.md             ← vision and objectives
+    roadmap.md          ← phased delivery plan
+    ai-context.md       ← instructions for AI assistants
+    audit-config.json   ← site structure config for content audit
+    reference.py        ← authoritative Wang Bi text for all 81 chapters
   Backup/               ← dated backups (YYYY-MM-DD/) before changes
 ```
 
@@ -123,6 +130,24 @@ Targets Mandarin TTS voice (`zh-CN`), speech rate 0.9.
 |-----------|-------------|-------|
 | > 600px | Multi-column auto-fit | Normal padding |
 | ≤ 600px | Single column | Compact padding |
+
+
+---
+
+# Content Audit
+
+Two files in `docs/` support ongoing content quality checks:
+
+**`audit-config.json`** — describes this site's HTML structure: which element holds the source text, what the explanation section is called, where the reference file lives. This is the config a generic audit skill reads to understand the site without being hardcoded to it.
+
+**`reference.py`** — the authoritative Wang Bi text for all 81 chapters, stored as a Python dict (`DDJ = {1: "...", 2: "...", ..., 81: "..."}`). The audit compares every chapter's `<p id="chineseText">` against this and flags any wrong, truncated, or mismatched text.
+
+The `ddj-content-audit` skill uses these two files along with two audit scripts to check:
+1. Source text correctness (vs Wang Bi reference)
+2. Explanation card completeness (every line covered)
+3. HTML structure integrity (nav, titles, sections, accessibility)
+
+Run the audit before any push to GitHub.
 
 ---
 
