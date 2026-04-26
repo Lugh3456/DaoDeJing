@@ -1,0 +1,41 @@
+{
+  "site_name": "Dao De Jing",
+  "language": "zh",
+  "pages": {
+    "pattern": "chapter{n}.html",
+    "count": 81,
+    "label": "Chapter"
+  },
+  "content": {
+    "source_text_element": "p",
+    "source_text_id": "chineseText",
+    "explanation_section_class": "line-explanation",
+    "explanation_card_class": "explanation-card",
+    "card_line_selector": "p.line",
+    "line_split_punctuation": "。？！；",
+    "reference_file": "reference.py",
+    "reference_variable": "DDJ"
+  },
+  "structure": {
+    "required_sections": [
+      "full-text",
+      "line-explanation",
+      "summary"
+    ],
+    "required_elements": [
+      "portal-bar",
+      "site-footer",
+      "skip-link",
+      "read-btn"
+    ],
+    "required_scripts": [
+      "speechSynthesis"
+    ],
+    "required_links": [
+      "style.css",
+      "fonts.googleapis.com",
+      "index.html"
+    ],
+    "html_lang": "zh"
+  }
+}
