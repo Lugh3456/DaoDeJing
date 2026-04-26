@@ -56,6 +56,8 @@ DaoDeJing/
     plan.md             ← vision and objectives
     roadmap.md          ← phased delivery plan
     ai-context.md       ← instructions for AI assistants
+    audit-config.json   ← site structure config for content audit
+    reference.py        ← authoritative Wang Bi text for all 81 chapters
   Backup/               ← dated backups before major changes
 ```
 
