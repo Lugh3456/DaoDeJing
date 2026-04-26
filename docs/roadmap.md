@@ -39,12 +39,13 @@ Possible improvements:
 
 ---
 
-# Phase 4 — Polish and Launch
+# Phase 4 — Polish and Launch (Completed)
 
 - SEO optimisation (meta tags, structured data)
 - Performance review (font loading, layout shift)
 - Full accessibility audit
-- Deploy to GitHub Pages
+- Deployed to GitHub Pages — 2026-04-08
+  Live URL: https://lugh3456.github.io/DaoDeJing/
 
 ---
 
@@ -53,3 +54,22 @@ Possible improvements:
 - Search or filter across chapters by theme or keyword
 - Favourite / bookmark chapters (client-side)
 - Dark mode option
+
+---
+
+# Phase 5 — Content Audit (Completed 2026-04-26)
+
+A full audit of all 81 chapters revealed 69 had content problems after initial generation.
+
+Issues found and fixed:
+- 22 chapters had wrong source text (text from a different chapter entirely)
+- 43 chapters had truncated source text (cut off before the end)
+- 4 chapters had minor character mismatches
+- Missing explanation cards across many chapters
+
+All 81 chapters now pass both the content audit and HTML structure check.
+
+Audit infrastructure added to `docs/`:
+- `audit-config.json` — site structure config for the audit skill
+- `reference.py` — authoritative Wang Bi text for all 81 chapters
+
